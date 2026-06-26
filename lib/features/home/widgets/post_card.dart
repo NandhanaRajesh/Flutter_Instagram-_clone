@@ -39,15 +39,15 @@ class PostCard extends StatelessWidget {
 
             const SizedBox(height: 12),
 
-            Container(
-              height: 250,
-              width: double.infinity,
-              color: Colors.grey.shade300,
-              child: const Icon(
-                Icons.image,
-                size: 80,
-              ),
-            ),
+           ClipRRect(
+             borderRadius: BorderRadius.circular(8),
+               child: Image.network(
+               post.imageUrl,
+               height: 300,
+                width: double.infinity,
+                fit: BoxFit.cover,
+                ),
+               ),
 
             const SizedBox(height: 12),
 

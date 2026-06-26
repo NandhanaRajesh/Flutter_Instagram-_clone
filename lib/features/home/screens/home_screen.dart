@@ -18,25 +18,29 @@ class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
   final List<Post> posts = const [
   Post(
-    username: 'Alex',
-    caption: 'Learning Flutter 🚀',
-    likes: 120,
-  ),
+  username: 'Alex',
+  caption: 'Learning Flutter 🚀',
+  likes: 120,
+  imageUrl: 'https://picsum.photos/id/1015/600/600',
+),
   Post(
-    username: 'Emma',
-    caption: 'Beautiful sunset 🌅',
-    likes: 350,
-  ),
+  username: 'Emma',
+  caption: 'Beautiful sunset 🌅',
+  likes: 350,
+  imageUrl: 'https://picsum.photos/id/1025/600/600',
+),
   Post(
-    username: 'John',
-    caption: 'Coffee first ☕',
-    likes: 98,
-  ),
+  username: 'John',
+  caption: 'Coffee first ☕',
+  likes: 98,
+  imageUrl: 'https://picsum.photos/id/1040/600/600',
+),
   Post(
-    username: 'Sarah',
-    caption: 'Weekend vibes 😎',
-    likes: 500,
-  ),
+  username: 'Sarah',
+  caption: 'Weekend vibes 😎',
+  likes: 500,
+  imageUrl: 'https://picsum.photos/id/1062/600/600',
+),
 ];
 
   List<Widget> get screens => [
