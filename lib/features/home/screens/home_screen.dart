@@ -4,6 +4,8 @@ import '../../post/screens/add_post_screen.dart';
 import '../../profile/screens/profile_screen.dart';
 import '../../reels/screens/reels_screen.dart';
 import '../../search/screens/search_screen.dart';
+import '../models/post.dart';
+import '../widgets/post_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,15 +16,36 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
+  final List<Post> posts = const [
+  Post(
+    username: 'Alex',
+    caption: 'Learning Flutter 🚀',
+    likes: 120,
+  ),
+  Post(
+    username: 'Emma',
+    caption: 'Beautiful sunset 🌅',
+    likes: 350,
+  ),
+  Post(
+    username: 'John',
+    caption: 'Coffee first ☕',
+    likes: 98,
+  ),
+  Post(
+    username: 'Sarah',
+    caption: 'Weekend vibes 😎',
+    likes: 500,
+  ),
+];
 
-  final List<Widget> screens = const [
-    HomeFeed(),
-    SearchScreen(),
-    AddPostScreen(),
-    ReelsScreen(),
-    ProfileScreen(),
-  ];
-
+  List<Widget> get screens => [
+  HomeFeed(posts: posts),
+  const SearchScreen(),
+  const AddPostScreen(),
+  const ReelsScreen(),
+  const ProfileScreen(),
+];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +90,12 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class HomeFeed extends StatelessWidget {
-  const HomeFeed({super.key});
+  final List<Post> posts;
+
+  const HomeFeed({
+    super.key,
+    required this.posts,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -75,9 +103,16 @@ class HomeFeed extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Instagram'),
       ),
-      body: const Padding(
-      padding: EdgeInsets.only(top: 10),
-       child: StoriesList(),
+      body: ListView(
+        children: [
+          const StoriesList(),
+
+          const Divider(),
+
+          ...posts.map(
+            (post) => PostCard(post: post),
+          ),
+        ],
       ),
     );
   }
