@@ -35,19 +35,27 @@ void initState() {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
-              children: [
-                const CircleAvatar(
-                  child: Icon(Icons.person),
-                ),
-                const SizedBox(width: 10),
-                Text(
-                  widget.post.username,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
+  children: [
+    const CircleAvatar(
+      radius: 18,
+      child: Icon(Icons.person, size: 20),
+    ),
+
+    const SizedBox(width: 10),
+
+    Expanded(
+      child: Text(
+        widget.post.username,
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 15,
+        ),
+      ),
+    ),
+
+    const Icon(Icons.more_vert),
+  ],
+),
 
             const SizedBox(height: 12),
 
@@ -63,10 +71,10 @@ void initState() {
 
             const SizedBox(height: 12),
 
-            Row(
-               children: [
-                 IconButton(
-                  onPressed: () {
+           Row(
+  children: [
+    IconButton(
+      onPressed: () {
         setState(() {
           isLiked = !isLiked;
 
@@ -83,26 +91,60 @@ void initState() {
       ),
     ),
 
-    const SizedBox(width: 8),
-
     const Icon(Icons.chat_bubble_outline),
 
     const SizedBox(width: 16),
 
     const Icon(Icons.send),
+
+    const Spacer(),
+
+    const Icon(Icons.bookmark_border),
   ],
 ),
             const SizedBox(height: 10),
-
             Text(
-  '$likeCount likes',
-  style: const TextStyle(
-    fontWeight: FontWeight.bold,
-  ),
-),
+             '$likeCount likes',
+              style: const TextStyle(
+               fontWeight: FontWeight.bold,
+              ),
+            ),
             const SizedBox(height: 5),
 
-            Text(widget.post.caption),
+           RichText(
+  text: TextSpan(
+    style: DefaultTextStyle.of(context).style,
+    children: [
+      TextSpan(
+        text: '${widget.post.username} ',
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      TextSpan(
+        text: widget.post.caption,
+      ),
+    ],
+  ),
+),
+const SizedBox(height: 6),
+
+const Text(
+  'View all 12 comments',
+  style: TextStyle(
+    color: Colors.grey,
+  ),
+),
+
+const SizedBox(height: 4),
+
+const Text(
+  '2 hours ago',
+  style: TextStyle(
+    color: Colors.grey,
+    fontSize: 12,
+  ),
+),
           ],
         ),
       ),

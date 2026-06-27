@@ -105,8 +105,20 @@ class HomeFeed extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Instagram'),
-      ),
+  title: const Text(
+    'Instagram',
+    style: TextStyle(
+      fontSize: 28,
+      fontWeight: FontWeight.bold,
+    ),
+  ),
+  actions: const [
+    Icon(Icons.favorite_border),
+    SizedBox(width: 20),
+    Icon(Icons.send_outlined),
+    SizedBox(width: 16),
+  ],
+),
       body: ListView(
         children: [
           const StoriesList(),
